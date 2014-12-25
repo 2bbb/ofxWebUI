@@ -1,4 +1,6 @@
 .DS_Store
 ofxWebUIExample/bin/data/ofxWebUIData/node_modules/
+ofxWebUIExample/bin/data/ofxWebUIData/generated/
 *.app
 ofxWebUIExample/ofxWebUIExample.xcodeproj/xcuserdata/2bit.xcuserdatad/
+ofxWebUIExample/ofxWebUIExample.xcodeproj/project.xcworkspace/xcuserdata
