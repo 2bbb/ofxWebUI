@@ -12,7 +12,7 @@ function initUI(io) {
 			max = get(param.option.max, 1),
 			initial = get(param.option.initial, 0.5);
 		var $wrapper = $('<div id="' + param.name + '_wrapper" class="ofxWebUI_slider_wrapper"></div>'),
-			$label = $('<div class="ofxWebUI_slider_label"><span>' + param.name + '</span></div>'),
+			$label = $('<div class="ofxWebUI_label"><span>' + param.name + '</span></div>'),
 			$ui = $('<div id="' + param.name +'" class="ofxWebUI_slider"></div>'),
 			$value = $('<div class="ofxWebUI_slider_value"><span>' + initial + '</span></div>');
 		$wrapper
@@ -71,15 +71,20 @@ function initUI(io) {
     // </div>
    		var labels = param.option.labels || ["undefined"],
    			initial = param.option.initial || 0,
-			htmlFragment = '<div id="' + param.name + '">';
+			htmlFragment = '<div id="' + param.name + '" class="ofxWebUI_select_box">';
 		for(var i = 0; i < labels.length; i++) {
 			var checked = (i == initial) ? ' checked="checked"' : '';
 			htmlFragment	+=	'<input type="radio" id=' + param.name + '_' + i + ' name="' + param.name + '"' + checked + '>'
 							+	'<label for="' + param.name + '_' + i + '">' + labels[i] + '</label>';
 		}
 		htmlFragment += '</div>';
-		$buttonset = $(htmlFragment);
-		$main.append($buttonset);
+		var $buttonset = $(htmlFragment),
+			$wrapper   = $('<div id="' + param.name + '_wrapper" class="ofxWebUI_select_box_wrapper"></div>"'),
+			$label     = $('<div class="ofxWebUI_label"><span>' + param.name + '</span></div>"');
+		$wrapper
+			.append($label)
+			.append($buttonset);
+		$main.append($wrapper);
 
 		$buttonset.buttonset();
 		var setValue = function(event) {

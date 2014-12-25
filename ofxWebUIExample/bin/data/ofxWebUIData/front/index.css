@@ -1,3 +1,14 @@
+.ofxWebUI_label {
+	display: inline-block;
+	width: 60px;
+}
+
+.ofxWebUI_label span {
+	vertical-align: baseline;
+	height: 100%;
+}
+
+/* slider */
 .ofxWebUI_slider_wrapper {
 	padding: 5px 10px;
 }
@@ -6,18 +17,7 @@
 	margin: 0 15px;
 	padding: 0;
 	width: 360px;
-	display:
-	inline-block;
-}
-
-.ofxWebUI_slider_label {
 	display: inline-block;
-	width: 60px;
-}
-
-.ofxWebUI_slider_label span {
-	vertical-align: baseline;
-	height: 100%;
 }
 
 .ofxWebUI_slider_value {
@@ -28,4 +28,17 @@
 .ofxWebUI_slider_value span {
 	vertical-align:
 	baseline; height: 100%;
+}
+
+/* select box */
+
+.ofxWebUI_select_box_wrapper {
+	padding: 5px 10px;
+}
+
+.ofxWebUI_select_box {
+	margin: 0 15px;
+	padding: 0;
+	width: 360px;
+	display: inline-block;
 }
