@@ -21,7 +21,6 @@ public:
 
 private:
     ofxWebUI ui;
-    int x;
-    float y;
-    double z;
+    unsigned char r, g, b;
+    float x;
 };
