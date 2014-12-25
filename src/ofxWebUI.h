@@ -33,6 +33,15 @@ public:
         parameters[name] = ofPtr<ofxWebUIParameter>(new ofxWebUIParameter(name, type, value, option));
     }
     
+    void unbindParameter(const string &name) {
+        for(auto it = keys.begin(); it != keys.end(); it++) {
+            if(*it == name) keys.erase(it);
+        }
+        parameters.erase(name);
+        
+        // TODO: commit to web ui
+    }
+    
     void runServer(bool withOpenBrowser = false) {
         using namespace ofxNodejs;
         
