@@ -16,13 +16,16 @@ var values = {};
 
 for(var i = 0; i < parameters.length; i++) {
 	var param = parameters[i];
-	values[param.name] = utils.get(param.initial, 0);
+	values[param.name] = utils.get(param.option.initial, 0);
 }
 
 io.on('connection', function(socket) {
 	console.log("ofxWebUI: ", "connection");
 	socket.on('change', function(data) {
 		values[data.name] = data.value;
+	});
+	socket.on('disconnect', function() {
+		console.log('disconnect');
 	});
 });
 

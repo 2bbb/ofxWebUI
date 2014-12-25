@@ -92,7 +92,7 @@ function initUI(io) {
 		};
 		UI.create = function(parameters, $main) {
 			for(var i = 0; i < parameters.length; i++) {
-				console.log(parameters[i]);
+				// console.log(parameters[i]);
 				UI.addParts[parameters[i].type](parameters[i], $main);
 			}
 		};
