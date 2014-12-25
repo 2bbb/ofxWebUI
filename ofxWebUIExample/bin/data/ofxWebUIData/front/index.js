@@ -7,6 +7,7 @@ function initUI(io) {
 		console.log(data.name + " removed!");
 		$("#" + data.name + "_wrapper").remove();
 	});
+	
 	function createSlider(param, $main) {
 		var min = get(param.option.min, 0),
 			max = get(param.option.max, 1),
@@ -86,7 +87,7 @@ function initUI(io) {
 			.append($buttonset);
 		$main.append($wrapper);
 
-		$buttonset.buttonset();
+		$buttonset.buttonset().find("label").css({width: 360 / labels.length, height: 25, fontSize: "80%"});
 		var setValue = function(event) {
 			var selected = this.id.substr(this.id.length - 1);
 			io.emit('change', {name: param.name, value: selected});
