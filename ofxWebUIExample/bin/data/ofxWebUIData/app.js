@@ -64,7 +64,6 @@ app.get('/:other', function (req, res) {
 });
 
 app.get('/images/:image', function (req, res) {
-	console.log(PATH + 'front/' + req.params.image);
 	loadAndWriteResponse(PATH + 'front/images/' + req.params.image, res);
 });
 
