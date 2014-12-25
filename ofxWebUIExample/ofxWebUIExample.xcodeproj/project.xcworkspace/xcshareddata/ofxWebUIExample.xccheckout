@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DD6CEE95-AC9B-455D-8303-4DD4042F0D10</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>69C337C926C4061951467A7112DC044888F744F6</key>
+		<string>github.com:satoruhiga/ofxNodejs.git</string>
+		<key>AC638406BB518680B268F714AA26899524AE2182</key>
+		<string>github.com:satoruhiga/ofxJsonxx.git</string>
+	</dict>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>69C337C926C4061951467A7112DC044888F744F6</key>
+		<string>ofxNodejs/</string>
+		<key>AC638406BB518680B268F714AA26899524AE2182</key>
+		<string>ofxJsonxx/</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:satoruhiga/ofxNodejs.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>69C337C926C4061951467A7112DC044888F744F6</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>AC638406BB518680B268F714AA26899524AE2182</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxJsonxx</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>69C337C926C4061951467A7112DC044888F744F6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxNodejs</string>
+		</dict>
+	</array>
+</dict>
+</plist>
