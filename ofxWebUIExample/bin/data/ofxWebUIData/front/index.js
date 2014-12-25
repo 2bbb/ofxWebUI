@@ -11,10 +11,10 @@ function initUI(io) {
 		var min = get(param.option.min, 0),
 			max = get(param.option.max, 1),
 			initial = get(param.option.initial, 0.5);
-		var $wrapper = $('<div id="' + param.name + '_wrapper" style="padding: 5px 10px;"></div>'),
-			$label = $('<div style="display: inline-block; width: 60px;"><span style="vertical-align: baseline; height: 100%;">' + param.name + '</span></div>'),
-			$ui = $('<div id="' + param.name +'" style="margin: 0 15px; padding: 0; width: 360px; display: inline-block;"></div>'),
-			$value = $('<div style="display: inline-block; width: 40px;"><span style="vertical-align: baseline; height: 100%;">' + initial + '</span></div>');
+		var $wrapper = $('<div id="' + param.name + '_wrapper" class="ofxWebUI_slider_wrapper"></div>'),
+			$label = $('<div class="ofxWebUI_slider_label"><span>' + param.name + '</span></div>'),
+			$ui = $('<div id="' + param.name +'" class="ofxWebUI_slider"></div>'),
+			$value = $('<div class="ofxWebUI_slider_value"><span>' + initial + '</span></div>');
 		$wrapper
 			.append($label)
 			.append($ui)
@@ -23,7 +23,7 @@ function initUI(io) {
 		
 		var setValue = function(event, ui) {
 			$value.html(ui.value);
-			io.emit('change', {"name": param.name, "value": ui.value});
+			io.emit('change', {name: param.name, value: ui.value});
 		}
 		$ui.slider({
 			min: min,
@@ -59,7 +59,34 @@ function initUI(io) {
 	}
 
 	function createSelectOption(param, $main) {
+    // <div id="radio">
+    //   <input type="radio" id="sizzle" name="project">
+    //   <label for="sizzle">Sizzle</label>
+ 
+    //   <input type="radio" id="qunit" name="project" checked="checked">
+    //   <label for="qunit">QUnit</label>
+ 
+    //   <input type="radio" id="color" name="project">
+    //   <label for="color">Color</label>
+    // </div>
+   		var labels = param.option.labels || ["undefined"],
+   			initial = param.option.initial || 0,
+			htmlFragment = '<div id="' + param.name + '">';
+		for(var i = 0; i < labels.length; i++) {
+			var checked = (i == initial) ? ' checked="checked"' : '';
+			htmlFragment	+=	'<input type="radio" id=' + param.name + '_' + i + ' name="' + param.name + '"' + checked + '>'
+							+	'<label for="' + param.name + '_' + i + '">' + labels[i] + '</label>';
+		}
+		htmlFragment += '</div>';
+		$buttonset = $(htmlFragment);
+		$main.append($buttonset);
 
+		$buttonset.buttonset();
+		var setValue = function(event) {
+			var selected = this.id.substr(this.id.length - 1);
+			io.emit('change', {name: param.name, value: selected});
+		};
+		$buttonset.find('input[type=radio]').change(setValue);
 	}
 
 	return (function(UI) {
@@ -74,6 +101,7 @@ function initUI(io) {
 		};
 		UI.create = function(parameters, $main) {
 			for(var i = 0; i < parameters.length; i++) {
+				console.log(parameters[i]);
 				UI.addParts[parameters[i].type](parameters[i], $main);
 			}
 		};

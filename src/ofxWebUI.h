@@ -40,7 +40,7 @@ public:
     }
     
     template <typename T>
-    ofPtr<ofxWebUIParameter> bindParameter(const string &name, ofxWebUIType type, T &value, ofxWebUIOption option = ofxWebUIOption()) {
+    ofPtr<ofxWebUIParameter> bindParameter(const string &name, ofxWebUIType type, T &value, const ofxWebUIOption &option = ofxWebUIOption()) {
         keys.push_back(name);
         parameters[name] = ofPtr<ofxWebUIParameter>(new ofxWebUIParameter(name, type, value, option));
         return parameters[name];

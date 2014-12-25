@@ -27,6 +27,7 @@ public:
 private:
     unsigned char r, g, b;
     float x;
+    int select;
     
     Foo foo;
 };

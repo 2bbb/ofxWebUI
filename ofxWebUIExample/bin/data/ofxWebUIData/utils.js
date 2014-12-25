@@ -9,6 +9,7 @@ module.exports = {
 <html>\
 	<head>\
 		<title>' + appName + '</title>\
+		<link href="./index.css" rel="stylesheet" type="text/css">\
 		<link href="./jquery-ui.css" rel="stylesheet" type="text/css">\
 		<script type="text/javascript" src="./jquery.js"></script>\
 		<script type="text/javascript" src="./jquery-ui.js"></script>\
