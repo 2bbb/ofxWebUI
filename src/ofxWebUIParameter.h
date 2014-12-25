@@ -8,6 +8,7 @@
 #pragma once
 
 #include "ofxJsonxx.h"
+#include "ofxWebUIOption.h"
 
 enum ofxWebUIType {
     ofxWebUITypeSlider,
@@ -52,7 +53,7 @@ enum ofxWebUIValueType {
 class ofxWebUIParameter {
 public:
     template <typename T>
-    ofxWebUIParameter(const string &name, ofxWebUIType type, T &value, const ofxJsonxx::Object &option)
+    ofxWebUIParameter(const string &name, ofxWebUIType type, T &value, const ofxWebUIOption &option)
     : name(name)
     , type(type)
     , option(option)
@@ -103,12 +104,17 @@ public:
             default: break;
         }
     }
-#undef u unsigned
+#undef u
+    
+    template <typename T>
+    void setOption(const string &optionName, T value) {
+        option.setOption(optionName, value);
+    }
     
     const string name;
     ofxWebUIType type;
     ofxWebUIValueType valueType;
-    ofxJsonxx::Object option;
+    ofxWebUIOption option;
 private:
     template <typename T, typename S>
     void get_(const ofxNodejs::Object &value) {

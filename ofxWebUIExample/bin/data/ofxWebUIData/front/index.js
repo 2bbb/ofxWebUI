@@ -7,9 +7,9 @@ function initUI(io) {
 		var min = get(param.option.min, 0),
 			max = get(param.option.max, 1),
 			initial = get(param.option.initial, 0.5);
-		var $wrapper = $('<div></div>'),
-			$ui = $('<div id="' + param.name +'" style="margin: 0 15px; padding: 0; width: 300px; display: inline-block;"></div>'),
-			$label = $('<div style="display: inline-block; width: 40px;"><span style="vertical-align: baseline; height: 100%;">' + param.name + '</span></div>'),
+		var $wrapper = $('<div style="padding: 5px 10px;"></div>'),
+			$label = $('<div style="display: inline-block; width: 60px;"><span style="vertical-align: baseline; height: 100%;">' + param.name + '</span></div>'),
+			$ui = $('<div id="' + param.name +'" style="margin: 0 15px; padding: 0; width: 360px; display: inline-block;"></div>'),
 			$value = $('<div style="display: inline-block; width: 40px;"><span style="vertical-align: baseline; height: 100%;">' + initial + '</span></div>');
 		$wrapper
 			.append($label)

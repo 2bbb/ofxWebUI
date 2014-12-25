@@ -3,19 +3,18 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ui.setup("ofxWebUI Example");
-    ofxJsonxx::Object o;
-    o << "min" << 0;
-    o << "max" << 255;
-    o << "initial" << 0;
-    ui.bindParameter("r", ofxWebUITypeSlider, r, o);
-    ui.bindParameter("g", ofxWebUITypeSlider, g, o);
-    ui.bindParameter("b", ofxWebUITypeSlider, b, o);
     
-    ofxJsonxx::Object o2;
-    o2 << "min" << 250;
-    o2 << "max" << 10000;
-    o2 << "initial" << 875;
-    ui.bindParameter("x", ofxWebUITypeSlider, x, o2);
+    ofxWebUIOption o1 = ofxWebUIOption::createRangeOption(250, 1000, 2500);
+    ui.bindParameter("x", ofxWebUITypeSlider, x, o1);
+    
+    ofxWebUIOption o2 = ofxWebUIOption::createRangeOption(-10000, 10000, 0);
+    ui.bindParameter("property", ofxWebUITypeSlider, foo.p, o2);
+    
+    ofxWebUIOption o3 = ofxWebUIOption::rangeOption0_255(127);
+    ui.bindParameter("r", ofxWebUITypeSlider, r, o3);
+    ui.bindParameter("g", ofxWebUITypeSlider, g, o3);
+    ui.bindParameter("b", ofxWebUITypeSlider, b, o3);
+    
     ui.runServer(true);
 }
 
@@ -27,10 +26,14 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     ofBackground(r, g, b);
-    ofDrawBitmapString("r: " + ofToString(r), ofPoint(10, 10));
-    ofDrawBitmapString("g: " + ofToString(g), ofPoint(10, 40));
-    ofDrawBitmapString("b: " + ofToString(b), ofPoint(10, 70));
-    ofDrawBitmapString("x: " + ofToString(x), ofPoint(10, 110));
+    
+    ofDrawBitmapString("x: " + ofToString(x), ofPoint(10, 20));
+    
+    ofDrawBitmapString("property: " + ofToString(foo.p), ofPoint(10, 60));
+    
+    ofDrawBitmapString("r: " + ofToString((int)r), ofPoint(10, 100));
+    ofDrawBitmapString("g: " + ofToString((int)g), ofPoint(10, 130));
+    ofDrawBitmapString("b: " + ofToString((int)b), ofPoint(10, 160));
 }
 
 //--------------------------------------------------------------

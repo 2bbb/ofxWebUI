@@ -6,26 +6,34 @@
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>DD6CEE95-AC9B-455D-8303-4DD4042F0D10</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ofxWebUIExample</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>69C337C926C4061951467A7112DC044888F744F6</key>
 		<string>github.com:satoruhiga/ofxNodejs.git</string>
 		<key>AC638406BB518680B268F714AA26899524AE2182</key>
 		<string>github.com:satoruhiga/ofxJsonxx.git</string>
+		<key>D3F65D8EEE74CB000432C183DE49569AA8CFFF7B</key>
+		<string>github.com:2bbb/ofxWebUI.git</string>
 	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ofxWebUIExample/ofxWebUIExample.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>69C337C926C4061951467A7112DC044888F744F6</key>
-		<string>ofxNodejs/</string>
+		<string>../../../../ofxNodejs</string>
 		<key>AC638406BB518680B268F714AA26899524AE2182</key>
-		<string>ofxJsonxx/</string>
+		<string>../../../../ofxJsonxx</string>
+		<key>D3F65D8EEE74CB000432C183DE49569AA8CFFF7B</key>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>github.com:satoruhiga/ofxNodejs.git</string>
+	<string>github.com:2bbb/ofxWebUI.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>69C337C926C4061951467A7112DC044888F744F6</string>
+	<string>D3F65D8EEE74CB000432C183DE49569AA8CFFF7B</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -43,6 +51,14 @@
 			<string>69C337C926C4061951467A7112DC044888F744F6</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ofxNodejs</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D3F65D8EEE74CB000432C183DE49569AA8CFFF7B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxWebUI</string>
 		</dict>
 	</array>
 </dict>

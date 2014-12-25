@@ -12,6 +12,7 @@
 #include "ofxJsonxx.h"
 
 #include "ofxWebUIParameter.h"
+#include "ofxWebUIOption.h"
 
 class ofxWebUI {
 public:
@@ -28,9 +29,10 @@ public:
     }
     
     template <typename T>
-    void bindParameter(const string &name, ofxWebUIType type, T &value, ofxJsonxx::Object option = ofxJsonxx::Object()) {
+    ofPtr<ofxWebUIParameter> bindParameter(const string &name, ofxWebUIType type, T &value, ofxWebUIOption option = ofxWebUIOption()) {
         keys.push_back(name);
         parameters[name] = ofPtr<ofxWebUIParameter>(new ofxWebUIParameter(name, type, value, option));
+        return parameters[name];
     }
     
     void unbindParameter(const string &name) {
@@ -70,7 +72,7 @@ public:
             ofxJsonxx::Object o;
             o << "name" << key;
             o << "type" << (string)ofxWebUITypeStrings[v->type];
-            o << "option" << v->option;
+            o << "option" << v->option.getRaw();
             arr << o;
         }
         ofxJsonxx::Object exports;

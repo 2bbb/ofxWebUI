@@ -3,6 +3,11 @@
 #include "ofMain.h"
 #include "ofxWebUI.h"
 
+class Foo {
+public:
+    long p;
+};
+
 class ofApp : public ofBaseApp{
 public:
     void setup();
@@ -23,4 +28,6 @@ private:
     ofxWebUI ui;
     unsigned char r, g, b;
     float x;
+    
+    Foo foo;
 };
