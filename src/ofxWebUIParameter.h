@@ -16,7 +16,6 @@ enum ofxWebUIType {
     ofxWebUITypeText,
     ofxWebUITypeLongText,
     ofxWebUITypeToggle,
-    ofxWebUITypeRadio,
     ofxWebUITypeSelect,
     ofxWebUITypeNum
 };
@@ -27,7 +26,6 @@ static const char *ofxWebUITypeStrings[] = {
     "text",
     "longText",
     "toggle",
-    "radio",
     "select"
 };
 

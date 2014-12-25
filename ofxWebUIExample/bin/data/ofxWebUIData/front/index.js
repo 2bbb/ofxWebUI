@@ -7,7 +7,7 @@ function initUI(io) {
 		console.log(data.name + " removed!");
 		$("#" + data.name + "_wrapper").remove();
 	});
-	
+
 	function createSlider(param, $main) {
 		var min = get(param.option.min, 0),
 			max = get(param.option.max, 1),
@@ -55,21 +55,7 @@ function initUI(io) {
 
 	}
 
-	function createRadioButtons(param, $main) {
-
-	}
-
 	function createSelectOption(param, $main) {
-    // <div id="radio">
-    //   <input type="radio" id="sizzle" name="project">
-    //   <label for="sizzle">Sizzle</label>
- 
-    //   <input type="radio" id="qunit" name="project" checked="checked">
-    //   <label for="qunit">QUnit</label>
- 
-    //   <input type="radio" id="color" name="project">
-    //   <label for="color">Color</label>
-    // </div>
    		var labels = param.option.labels || ["undefined"],
    			initial = param.option.initial || 0,
 			htmlFragment = '<div id="' + param.name + '" class="ofxWebUI_select_box">';
@@ -102,7 +88,6 @@ function initUI(io) {
 			text:     createTextBox,
 			longText: createTextArea,
 			toggle:   createToggle,
-			radio:    createRadioButtons,
 			select:   createSelectOption
 		};
 		UI.create = function(parameters, $main) {
