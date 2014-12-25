@@ -25,7 +25,6 @@ public:
     void gotMessage(ofMessage msg);
 
 private:
-    ofxWebUI ui;
     unsigned char r, g, b;
     float x;
     

@@ -26,6 +26,12 @@ io.on('connection', function(socket) {
 	});
 });
 
+function remove(name) {
+	delete values[name];
+	console.log(name + " removed");
+	io.sockets.emit('remove', {'name': name});
+}
+
 function loadAndWriteResponse(filePath, res) {
 	fs.readFile(filePath, function(err, data) {
 		if(err) {

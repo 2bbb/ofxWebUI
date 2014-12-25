@@ -14,8 +14,19 @@
 #include "ofxWebUIParameter.h"
 #include "ofxWebUIOption.h"
 
+#define ENABLE_UNBIND 0
+
 class ofxWebUI {
+    static ofxWebUI *sharedInstance;
+    ofxWebUI() {};
 public:
+    static ofxWebUI &ui() {
+        if(sharedInstance == NULL) {
+            sharedInstance = new ofxWebUI;
+        }
+        return *sharedInstance;
+    }
+    
     void setup(string appName) {
         this->appName = appName;
     }
@@ -35,14 +46,19 @@ public:
         return parameters[name];
     }
     
+#if ENABLE_UNBIND
     void unbindParameter(const string &name) {
+        using namespace ofxNodejs;
         for(auto it = keys.begin(); it != keys.end(); it++) {
             if(*it == name) keys.erase(it);
         }
         parameters.erase(name);
         
         // TODO: commit to web ui
+        
+        $("remove").as<Function>()($(name));
     }
+#endif
     
     void runServer(bool withOpenBrowser = false) {
         using namespace ofxNodejs;
@@ -98,3 +114,5 @@ private:
     map<string, ofPtr<ofxWebUIParameter> > parameters;
     vector<string> keys;
 };
+
+ofxWebUI *ofxWebUI::sharedInstance = NULL;

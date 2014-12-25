@@ -2,6 +2,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    ofxWebUI &ui = ofxWebUI::ui();
     ui.setup("ofxWebUI Example");
     
     ofxWebUIOption o1 = ofxWebUIOption::createRangeOption(250, 1000, 2500);
@@ -20,7 +21,7 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    ui.update();
+    ofxWebUI::ui().update();
 }
 
 //--------------------------------------------------------------
@@ -38,7 +39,11 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+#if ENABLE_UNBIND
+    if(key == 'r') {
+        ofxWebUI::ui().unbindParameter("x");
+    }
+#endif
 }
 
 //--------------------------------------------------------------

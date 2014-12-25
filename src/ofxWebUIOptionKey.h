@@ -11,4 +11,5 @@ namespace ofxWebUIOptionKey {
     static const string min     = "min";
     static const string max     = "max";
     static const string initial = "initial";
+    static const string step    = "step";
 };
