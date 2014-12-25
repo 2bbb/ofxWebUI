@@ -1,11 +1,8 @@
 .ofxWebUI_label {
 	display: inline-block;
-	width: 60px;
-}
-
-.ofxWebUI_label span {
-	vertical-align: baseline;
-	height: 100%;
+	width: 80px;
+	height: 25px;
+	font-size: 80%;
 }
 
 /* slider */
@@ -18,16 +15,6 @@
 	padding: 0;
 	width: 360px;
 	display: inline-block;
-}
-
-.ofxWebUI_slider_value {
-	display: inline-block;
-	width: 40px;
-}
-
-.ofxWebUI_slider_value span {
-	vertical-align:
-	baseline; height: 100%;
 }
 
 /* select box */
