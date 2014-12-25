@@ -12,10 +12,10 @@ function initUI(io) {
 		var min = get(param.option.min, 0),
 			max = get(param.option.max, 1),
 			initial = get(param.option.initial, 0.5);
-		var $wrapper = $('<div id="' + param.name + '_wrapper" class="ofxWebUI_slider_wrapper"></div>'),
+		var $wrapper = $('<div id="' + param.name + '_wrapper" class="ofxWebUI_wrapper ofxWebUI_slider_wrapper"></div>'),
 			$label = $('<div class="ofxWebUI_label">' + param.name + '</div>'),
 			$ui = $('<div id="' + param.name +'" class="ofxWebUI_slider"></div>'),
-			$value = $('<div class="ofxWebUI_label">' + initial + '</div>');
+			$value = $('<div class="ofxWebUI_label right">' + initial + '</div>');
 		$wrapper
 			.append($label)
 			.append($ui)
@@ -66,21 +66,25 @@ function initUI(io) {
 							+	'<label for="' + param.name + '_' + i + '">' + labels[i] + '</label>';
 		}
 		htmlFragment += '</div>';
-		var $buttonset = $(htmlFragment),
-			$wrapper   = $('<div id="' + param.name + '_wrapper" class="ofxWebUI_select_box_wrapper"></div>"'),
-			$label     = $('<div class="ofxWebUI_label">' + param.name + '</div>"');
+		var $ui      = $(htmlFragment),
+			$wrapper = $('<div id="' + param.name + '_wrapper" class="ofxWebUI_wrapper ofxWebUI_select_box_wrapper"></div>"'),
+			$label   = $('<div class="ofxWebUI_label">' + param.name + '</div>"'),
+			$value   = $('<div class="ofxWebUI_label right">' + initial + '</div>"');
 		$wrapper
 			.append($label)
-			.append($buttonset);
+			.append($ui)
+			.append($value);
 		$main.append($wrapper);
 
-		$buttonset.buttonset().find("label").css({width: 360 / labels.length, height: 25, fontSize: "80%"});
+		$ui.buttonset().find("label").css({width: 360 / labels.length, height: 25, fontSize: "80%"});
 		$label.button({disabled: true}).css({height: 25, fontSize: "80%"});
+		$value.button({disabled: true}).css({height: 25, fontSize: "80%"});
 		var setValue = function(event) {
 			var selected = this.id.substr(this.id.length - 1);
+			$value.button({label: "" + selected});
 			io.emit('change', {name: param.name, value: selected});
 		};
-		$buttonset.find('input[type=radio]').change(setValue);
+		$ui.find('input[type=radio]').change(setValue);
 	}
 
 	return (function(UI) {

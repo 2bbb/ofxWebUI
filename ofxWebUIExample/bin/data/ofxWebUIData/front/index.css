@@ -1,3 +1,12 @@
+.right {
+	float: right;
+}
+
+.ofxWebUI_wrapper  {
+	clear: both;
+	width : 560px;
+}
+
 .ofxWebUI_label {
 	display: inline-block;
 	width: 80px;
