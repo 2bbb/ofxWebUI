@@ -56,6 +56,10 @@ function initUI(io) {
 
 	}
 
+	function createFlags(param, $main) {
+		
+	}
+
 	function createSelectOption(param, $main) {
    		var labels = param.option.labels || ["undefined"],
    			initial = param.option.initial || 0,
@@ -87,6 +91,10 @@ function initUI(io) {
 		$ui.find('input[type=radio]').change(setValue);
 	}
 
+	function createColor(param, $main) {
+
+	}
+
 	return (function(UI) {
 		UI.addParts = {
 			slider:   createSlider,
@@ -94,7 +102,9 @@ function initUI(io) {
 			text:     createTextBox,
 			longText: createTextArea,
 			toggle:   createToggle,
-			select:   createSelectOption
+			flags:    createFlags,
+			select:   createSelectOption,
+			color:    createColor
 		};
 		UI.create = function(parameters, $main) {
 			for(var i = 0; i < parameters.length; i++) {

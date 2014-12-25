@@ -39,6 +39,14 @@ public:
         }
     }
     
+//    ofPtr<ofxWebUIParameter> bindParameter(const string &name, ofxWebUIType type, ofColor &value, const ofxWebUIOption &option = ofxWebUIOption()) {
+//        
+//    }
+//    
+//    ofPtr<ofxWebUIParameter> bindParameter(const string &name, ofxWebUIType type, ofFloatColor &value, const ofxWebUIOption &option = ofxWebUIOption()) {
+//        
+//    }
+    
     template <typename T>
     ofPtr<ofxWebUIParameter> bindParameter(const string &name, ofxWebUIType type, T &value, const ofxWebUIOption &option = ofxWebUIOption()) {
         keys.push_back(name);

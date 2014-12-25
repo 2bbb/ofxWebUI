@@ -20,19 +20,19 @@ for(var i = 0; i < parameters.length; i++) {
 }
 
 io.on('connection', function(socket) {
-	console.log("ofxWebUI: ", "connection");
+	console.log("ofxWebUI: ", "connected");
 	socket.on('change', function(data) {
 		values[data.name] = data.value;
 	});
 	socket.on('disconnect', function() {
-		console.log('disconnect');
+		console.log('disconnected');
 	});
 });
 
 function remove(name) {
 	delete values[name];
 	console.log(name + " removed");
-	io.sockets.emit('remove', {'name': name});
+	io.sockets.emit('remove', {name: name});
 }
 
 function loadAndWriteResponse(filePath, res) {
