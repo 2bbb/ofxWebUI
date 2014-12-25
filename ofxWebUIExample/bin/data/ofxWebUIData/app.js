@@ -48,9 +48,18 @@ function loadAndWriteResponse(filePath, res) {
 }
 
 app.get('/', function (req, res) {
-	res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
-	res.write(utils.createHTML(config.appName, parameters));
-	res.end();
+	fs.readFile(PATH + 'front/index.html', 'utf-8', function(err, data) {
+		if(err) {
+			console.log(err);
+			res.writeHead(404);
+			res.end();
+		} else {
+			var html = data.split('##APP_NAME##').join(config.appName || 'ofxWebUI');
+			res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
+			res.write(html);
+			res.end();
+		}
+	});
 });
 
 app.get('/index.html', function (req, res) {
