@@ -103,6 +103,7 @@ public:
             default: break;
         }
     }
+#undef u unsigned
     
     const string name;
     ofxWebUIType type;
