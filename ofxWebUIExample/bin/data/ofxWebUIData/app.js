@@ -65,16 +65,14 @@ app.get('/', function (req, res) {
 	});
 });
 
-app.get('/index.html', function (req, res) {
-	res.writeHead(200, {'Content-Type': 'text/html'});
-	res.write(utils.createHTML(config.appName, parameters, values));
-	res.end();
-});
-
 app.get('/:other', function (req, res) {
 	if(req.params.other == "parameters.js") {
+		var _parameters = utils.clone(parameters);
+		for(var i = 0; i < _parameters.length; i++) {
+			_parameters[i].option.initial = values[_parameters[i].name];
+		}
 		res.writeHead(200, {'Content-Type': 'application/javascript'});
-		res.write('parameters = ' + JSON.stringify(parameters) + ";");
+		res.write('parameters = ' + JSON.stringify(_parameters) + ";");
 		res.end();
 	} else {
 		loadAndWriteResponse(PATH + 'front/' + req.params.other, res);
