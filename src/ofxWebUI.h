@@ -29,6 +29,10 @@ public:
     
     void setup(string appName) {
         this->appName = appName;
+        ofDirectory dir("ofxWebUIData/generated");
+        if(!dir.exists()) {
+            ofDirectory::createDirectory("ofxWebUIData/generated");
+        }
     }
     
     void update() {
