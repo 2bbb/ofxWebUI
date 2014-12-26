@@ -126,5 +126,3 @@ private:
     map<string, ofPtr<ofxWebUIParameter> > parameters;
     vector<string> keys;
 };
-
-ofxWebUI *ofxWebUI::sharedInstance = NULL;
