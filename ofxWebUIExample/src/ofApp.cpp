@@ -5,7 +5,7 @@ void ofApp::setup(){
     ofxWebUI &ui = ofxWebUI::ui();
     ui.setup("ofxWebUI Example");
     
-    ofxWebUIOption o1 = ofxWebUIOption::createRangeOption(250, 1000, 2500);
+    ofxWebUIOption o1 = ofxWebUIOption::createRangeOption(100, 2500, 250);
     ui.bindParameter("x", ofxWebUITypeSlider, x, o1);
     
     ofxWebUIOption o2 = ofxWebUIOption::createRangeOption(-10000, 10000, 0);
