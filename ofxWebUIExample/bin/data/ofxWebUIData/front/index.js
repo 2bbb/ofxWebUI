@@ -3,6 +3,13 @@ function get(v, defaultValue) {
 }
 
 function initUI(io) {
+	var Design = {
+		UIParts: {
+			width: 360,
+			height : 25
+		}
+	}
+
 	io.on('remove', function(data) {
 		console.log(data.name + " removed!");
 		$("#" + data.name + "_wrapper").remove();
@@ -19,7 +26,7 @@ function initUI(io) {
 		var min = get(param.option.min, 0),
 			max = get(param.option.max, 1),
 			initial = get(param.option.initial, 0.5);
-		var $ui = $('<div id="' + param.name +'" class="ofxWebUI_slider"></div>'),
+		var $ui = $('<div id="' + param.name +'" class="ofxWebUI_item ofxWebUI_slider"></div>'),
 			$wrapper = $('<div id="' + param.name + '_wrapper" class="ofxWebUI_wrapper ofxWebUI_slider_wrapper"></div>'),
 			$label = createLabel(param.name),
 			$value = createLabel(initial, true);
@@ -62,7 +69,7 @@ function initUI(io) {
 	function createToggle(param, $main) {
 		var initial = param.option.initial;
 
-		var $ui = $('<input type="checkbox" id="' + param.name + '"><label for="' + param.name + '">' + param.name + '</label>'),
+		var $ui = $('<div class="ofxWebUI_item"><input type="checkbox" id="' + param.name + '"><label for="' + param.name + '">' + param.name + '</label></div>'),
 			$wrapper = $('<div id="' + param.name + '_wrapper" class="ofxWebUI_wrapper ofxWebUI_toggle_wrapper"></div>'),
 			$label = createLabel(param.name),
 			$value = createLabel(initial, true);
@@ -73,25 +80,20 @@ function initUI(io) {
 			.append($value);
 		$main.append($wrapper);
 
-		$ui.button({height: 25, fontSize: "80%"});
-
 		var setValue = function(event) {
-			var selected = this.id.substr(this.id.length - 1);
-			$value.button({label: "" + selected});
-
-			notifyChangeValue(param.name, selected);
+			var checked = $(this).prop('checked') ? 1 : 0;
+			notifyChangeValue(param.name, checked)
 		};
-		$ui.change(setValue);
+		$ui.find('input[type=checkbox]')
+			.button()
+			.change(setValue);
+		$ui.find('label').css({width: Design.UIParts.width, height: Design.UIParts.height, fontSize: "80%"})
 	}
 
 	function createFlags(param, $main) {
-
-	}
-
-	function createSelectOption(param, $main) {
    		var labels = param.option.labels || ["undefined"],
    			initial = param.option.initial || 0,
-			htmlFragment = '<div id="' + param.name + '" class="ofxWebUI_select_box">';
+			htmlFragment = '<div id="' + param.name + '" class="ofxWebUI_item ofxWebUI_select_box">';
 		for(var i = 0; i < labels.length; i++) {
 			var checked = (i == initial) ? ' checked="checked"' : '';
 			htmlFragment	+=	'<input type="radio" id=' + param.name + '_' + i + ' name="' + param.name + '"' + checked + '>'
@@ -109,12 +111,44 @@ function initUI(io) {
 			.append($value);
 		$main.append($wrapper);
 
-		$ui.buttonset().find("label").css({width: 360 / labels.length, height: 25, fontSize: "80%"});
+		$ui.buttonset().find("label").css({width: Design.UIParts.width / labels.length, height: Design.UIParts.height, fontSize: "80%"});
+
+		var setValue = function(event) {
+			var selected = this.value;
+			$value.button({label: "" + selected});
+			
+			notifyChangeValue(param.name, selected);
+		};
+		$ui.find('input[type=radio]').change(setValue);
+	}
+
+	function createSelectOption(param, $main) {
+   		var labels = param.option.labels || ["undefined"],
+   			initial = param.option.initial || 0,
+			htmlFragment = '<div id="' + param.name + '" class="ofxWebUI_item ofxWebUI_select_box">';
+		for(var i = 0; i < labels.length; i++) {
+			var checked = (i == initial) ? ' checked="checked"' : '';
+			htmlFragment	+=	'<input type="radio" id=' + param.name + '_' + i + ' name="' + param.name + '"' + checked + '>'
+							+	'<label for="' + param.name + '_' + i + '">' + labels[i] + '</label>';
+		}
+		htmlFragment += '</div>';
+		var $ui      = $(htmlFragment),
+			$wrapper = $('<div id="' + param.name + '_wrapper" class="ofxWebUI_wrapper ofxWebUI_select_box_wrapper"></div>"'),
+			$label = createLabel(param.name),
+			$value = createLabel(initial, true);
+
+		$wrapper
+			.append($label)
+			.append($ui)
+			.append($value);
+		$main.append($wrapper);
+
+		$ui.buttonset().find("label").css({width: Design.UIParts.width / labels.length, height: Design.UIParts.height, fontSize: "80%"});
 
 		var setValue = function(event) {
 			var selected = this.id.substr(this.id.length - 1);
 			$value.button({label: "" + selected});
-			
+
 			notifyChangeValue(param.name, selected);
 		};
 		$ui.find('input[type=radio]').change(setValue);
@@ -137,7 +171,6 @@ function initUI(io) {
 		};
 		UI.create = function(parameters, $main) {
 			for(var i = 0; i < parameters.length; i++) {
-				// console.log(parameters[i]);
 				UI.addParts[parameters[i].type](parameters[i], $main);
 			}
 		};

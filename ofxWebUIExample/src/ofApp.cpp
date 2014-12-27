@@ -23,6 +23,8 @@ void ofApp::setup(){
     ofxWebUIOption o4 = ofxWebUIOption::createSelectBoxOption(labels);
     ui.bindParameter("select", ofxWebUITypeSelect, select, o4);
     
+    ui.bindParameter("isSelected", ofxWebUITypeToggle, isSelected);
+    
     ui.runServer(true);
 }
 
@@ -33,7 +35,11 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofBackground(r, g, b);
+    if(isSelected) {
+        ofBackground(r, g, b);
+    } else {
+        ofBackground(255 - r, 255 - g, 255 - b);
+    }
     
     ofDrawBitmapString("x: " + ofToString(x), ofPoint(10, 20));
     
