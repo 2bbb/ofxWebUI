@@ -9,7 +9,7 @@ function initUI(io) {
 	});
 
 	var notifyChangeValue = function(key, value) {
-			io.emit('change', {name: param.name, value: ui.value});
+			io.emit('change', {name: key, value: value});
 		},
 		createLabel = function(text, isRight) {
 			return $('<div class="ofxWebUI_label' + (isRight ? ' right' : '') + '">' + text + '</div>').button({disabled: true}).css({height: 25, fontSize: "80%"})
@@ -33,7 +33,7 @@ function initUI(io) {
 		
 		var setValue = function(event, ui) {
 			$value.button({label: ui.value});
-			sendSocket(param.name, ui.value);
+			notifyChangeValue(param.name, ui.value);
 		}
 		$ui.slider({
 			min: min,
