@@ -3,6 +3,7 @@
 }
 
 .ofxWebUI_wrapper  {
+	padding: 5px 10px;
 	clear: both;
 	width : 560px;
 }
@@ -14,27 +15,27 @@
 	font-size: 80%;
 }
 
-/* slider */
-.ofxWebUI_slider_wrapper {
-	padding: 5px 10px;
-}
-
-.ofxWebUI_slider {
+.ofxWebUI_item {
 	margin: 0 15px;
 	padding: 0;
 	width: 360px;
 	display: inline-block;
+}
+
+/* slider */
+.ofxWebUI_slider_wrapper {
+}
+
+.ofxWebUI_slider {
 }
 
 /* select box */
 
 .ofxWebUI_select_box_wrapper {
-	padding: 5px 10px;
 }
 
 .ofxWebUI_select_box {
-	margin: 0 15px;
-	padding: 0;
-	width: 360px;
-	display: inline-block;
+}
+
+.ofxWebUI_toggle_wrapper {
 }

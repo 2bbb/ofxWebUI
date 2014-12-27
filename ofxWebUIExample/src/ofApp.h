@@ -30,4 +30,6 @@ private:
     int select;
     
     Foo foo;
+    
+    bool isSelected;
 };

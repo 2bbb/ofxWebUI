@@ -16,7 +16,9 @@ enum ofxWebUIType {
     ofxWebUITypeText,
     ofxWebUITypeLongText,
     ofxWebUITypeToggle,
+    ofxWebUITypeFlags,
     ofxWebUITypeSelect,
+    ofxWebUITypeColor,
     ofxWebUITypeNum
 };
 
@@ -26,7 +28,9 @@ static const char *ofxWebUITypeStrings[] = {
     "text",
     "longText",
     "toggle",
-    "select"
+    "flags",
+    "select",
+    "color"
 };
 
 enum ofxWebUIValueType {
@@ -114,9 +118,9 @@ public:
     ofxWebUIValueType valueType;
     ofxWebUIOption option;
 private:
-    template <typename T, typename S>
+    template <typename S, typename T>
     void get_(const ofxNodejs::Object &value) {
-        *(static_cast<T *>(this->value)) = value.as<S>();
+        *(static_cast<S *>(this->value)) = value.as<T>();
     }
     void *value;
 };
