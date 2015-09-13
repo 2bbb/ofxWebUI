@@ -3,6 +3,12 @@
 
 Now only slider UI...
 
+## Important
+
+this addon only tested on OSX.
+and i can't care other env.
+sorry! ;)
+
 ## How to use
 
 TODO
